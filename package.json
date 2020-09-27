@@ -10,8 +10,8 @@
     "node": "12.15.0",
     "npm": "6.13.4"
   },
-  "scripts": {
-    "start": "node app.js",
+  "scripts": {    
+    "start": "node app.js"
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,9 +21,10 @@
   },
   "bugs": {
     "url": "https://github.com/anhvoduy/node-to-azure/issues"
-  },
+  },  
   "homepage": "https://github.com/anhvoduy/node-to-azure#readme",
   "dependencies": {
+    "simple-oauth2": "^2.2.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
