@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "node app.js",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
