@@ -5,12 +5,12 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 // Very basic HTML templates
-var page = require('./page');
 var authHelp = require('./authHelp');
+var page = require('./public/pages/homepage');
 
 // Configure express
 // Set up rendering of static files
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/public'));
 // Need JSON body parser for most API responses
 app.use(bodyParser.json());
 // Set up cookies and sessions to save tokens
