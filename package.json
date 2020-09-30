@@ -21,9 +21,10 @@
   },
   "bugs": {
     "url": "https://github.com/anhvoduy/node-to-azure/issues"
-  },
+  },  
   "homepage": "https://github.com/anhvoduy/node-to-azure#readme",
   "dependencies": {
+    "simple-oauth2": "^2.2.1",
     "@azure/cosmos": "^3.9.2",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
