@@ -3,7 +3,7 @@ const request = require('request');
 
 var fetchData = function (url) {
   return request(url, { json: true }, (err, res, body) => {
-    if(err) throw err;    
+    if(err) throw err;
     return res.body;
   });
 }
