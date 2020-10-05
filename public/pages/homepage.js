@@ -1,4 +1,14 @@
 var querystring = require('querystring');
+const request = require('request');
+
+var fetchData = function (url) {
+  return request(url, { json: true }, (err, res, body) => {
+    if(err) throw err;    
+    return res.body;
+  });
+}
+
+fetchData('http://localhost:3000/api/tasks');
 
 var baseHtml = '<html>' +
   '<head>' +

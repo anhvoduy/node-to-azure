@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 // Very basic HTML templates
-var authHelp = require('./authHelp');
+var authHelp = require('./utils/authHelp');
 var page = require('./public/pages/homepage');
 
 // Configure express
@@ -20,7 +20,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false 
 }));
-  
+
+// Set up api
+app.use('/api', require('./api'));
+
 // Home page
 app.get('/', function(req, res) {
     res.send(page.loginPage(authHelp.getAuthUrl()));
@@ -29,14 +32,14 @@ app.get('/', function(req, res) {
 app.get('/authorize', function(req, res) {
     var authCode = req.query.code;
     if (authCode) {
-      console.log('');
-      console.log('Retrieved auth code in /authorize: ' + authCode);
-      authHelper.getTokenFromCode(authCode, tokenReceived, req, res);
+        console.log('');
+        console.log('Retrieved auth code in /authorize: ' + authCode);
+        authHelper.getTokenFromCode(authCode, tokenReceived, req, res);
     }
     else {
-      // redirect to home
-      console.log('/authorize called without a code parameter, redirecting to login');
-      res.redirect('/');
+        // redirect to home
+        console.log('/authorize called without a code parameter, redirecting to login');
+        res.redirect('/');
     }
 });
 
@@ -72,6 +75,5 @@ app.get('/logincomplete', function(req, res) {
 var server = app.listen(3000, function() {
     var host = server.address().address;
     var port = server.address().port;
-
-    console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Web app listening at http://%s:%s', host, port);
 });
