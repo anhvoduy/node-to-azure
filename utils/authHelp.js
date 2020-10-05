@@ -24,7 +24,6 @@ module.exports = {
             redirect_uri: redirectUri,
             scope: scopes.join(' ')
         });
-        console.log('');
         console.log('Generated auth url: ' + returnVal);
         return returnVal;
       }
@@ -43,7 +42,6 @@ module.exports = {
             }
             else {
                 var token = oauth2.accessToken.create(result);
-                console.log('');
                 console.log('Token created: ', token.token);
                 callback(request, response, null, token);
             }
