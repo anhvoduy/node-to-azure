@@ -9,23 +9,25 @@ var scopes = [
 ];
 
 var credentials = {
-    clientID: clientId,
-    clientSecret: clientSecret,
-    site: 'https://login.microsoftonline.com/common',
-    authorizationPath: '/oauth2/v2.0/authorize',
-    tokenPath: '/oauth2/v2.0/token'
+  clientID: clientId,
+  clientSecret: clientSecret,
+  site: 'https://login.microsoftonline.com/common',
+  authorizationPath: '/oauth2/v2.0/authorize',
+  tokenPath: '/oauth2/v2.0/token'
 };
 var oauth2 = require('simple-oauth2', credentials);
 
 module.exports = {
     getAuthUrl: function() {
+      if(oauth2 && oauth2.authCode) {
         var returnVal = oauth2.authCode.authorizeURL({
             redirect_uri: redirectUri,
             scope: scopes.join(' ')
         });
-        console.log('');
         console.log('Generated auth url: ' + returnVal);
         return returnVal;
+      }
+      return null;
     },
 
     getTokenFromCode: function(auth_code, callback, request, response) {
@@ -40,7 +42,6 @@ module.exports = {
             }
             else {
                 var token = oauth2.accessToken.create(result);
-                console.log('');
                 console.log('Token created: ', token.token);
                 callback(request, response, null, token);
             }
