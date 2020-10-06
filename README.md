@@ -9,3 +9,5 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=cli%2Cssl-n
 
 # azure cosmosdb:
 https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-nodejs
+
+https://docs.microsoft.com/en-us/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_regenerate_key
